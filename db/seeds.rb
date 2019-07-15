@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Restaurant.create(name: "CrazyFire", location: "Leesville Towne Centre")
+
