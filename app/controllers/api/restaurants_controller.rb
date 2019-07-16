@@ -4,7 +4,9 @@ class Api::RestaurantsController < ApplicationController
   # GET /restaurants
   def index
     @restaurants = Restaurant.all
-    render json: @restaurants
+    # render json: @restaurants
+    restaurants_json = RestaurantSerializer.new(@restaurants).serialized_json
+    render json: restaurants_json
   end
 
   # GET /restaurants/1
