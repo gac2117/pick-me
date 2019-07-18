@@ -36,7 +36,11 @@ class Api::RestaurantsController < ApplicationController
 
   # DELETE /restaurants/1
   def destroy
-    @restaurant.destroy
+    if @restaurant.destroy
+      render json: {data: "Restaurant successfully deleted."}, status: :ok
+    else
+      render json: @restaurant.errors, status: unprocessable_entity
+    end
   end
 
   private
