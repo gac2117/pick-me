@@ -5,6 +5,7 @@ class Api::TagsController < ApplicationController
 	end
 
 	def show
+		@tag = Tag.find(params[:id])
 		render json: @tag 
 	end
 
@@ -26,6 +27,7 @@ class Api::TagsController < ApplicationController
 	end
 
 	def destroy
+		@tag = Tag.find(params[:id])
 		@tag.destroy
 	end
 
