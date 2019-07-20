@@ -11,8 +11,9 @@ class Api::TagsController < ApplicationController
 
 	def create
 		@tag = Tag.new(tag_params)
+
 		if @tag.save
-			render json: @tag, status: :created, location: @tag
+			render json: @tag, status: :created
 		else
 			render json: @tag.errors, status: :unprocessable_entity
 		end
@@ -33,6 +34,6 @@ class Api::TagsController < ApplicationController
 
 	private
 		def tag_params
-			params.require(:tag).permit(:name)
+			params.require(:tag).permit(:name, :restaurant_id)
 		end
 end
