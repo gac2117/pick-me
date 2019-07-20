@@ -29,7 +29,11 @@ class Api::TagsController < ApplicationController
 
 	def destroy
 		@tag = Tag.find(params[:id])
-		@tag.destroy
+		if @tag.destroy
+			render json: {data: "Tag successfully deletec."}, status: :ok
+		else
+			render json: @tag.errors, status: unprocessable_entity
+		end
 	end
 
 	private
